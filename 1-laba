@@ -1,0 +1,73 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+static List<string> users = new List<string>();
+
+static List<string> books = new List<string>()
+{
+        "Война и мир",
+        "Преступление и наказание",
+        "Пиковая дама",
+        "Мёртвые души",
+        "Ревизор",
+        "Отцы и дети",
+        "Гарри Поттер"
+};
+
+static void Main()
+{
+Console.Write("Введите имя: ");
+string name = Console.ReadLine();
+
+Console.Write("Введите фамилию: ");
+string surname = Console.ReadLine();
+
+string fullName = name + " " + surname;
+
+if (users.Contains(fullName))
+{
+Console.WriteLine("Здравствуйте, " + fullName + "!");
+ChooseBook(fullName);
+}else{
+Console.WriteLine("Вас нет в списке. Создать карточку? (да/нет)");
+string answer = Console.ReadLine();
+
+if (answer.ToLower() == "да")
+{
+CreateCard(fullName);
+ChooseBook(fullName);
+}else{
+Console.WriteLine("До свидания!");
+  }
+}    
+
+Console.ReadKey();
+}
+
+static void CreateCard(string fullName)
+{
+users.Add(fullName);
+Console.WriteLine("Карточка для " + fullName + " создана!");
+}
+
+static void ChooseBook(string fullName)
+ {
+Console.WriteLine("\nДоступные книги:");
+for (inti = 0; i<books.Count; i++)
+{
+Console.WriteLine((i + 1) + ". " + books[i]);
+}
+
+Console.Write("Введите номер книги: ");
+int choice = int.Parse(Console.ReadLine());
+
+if (choice >= 1 && choice <= books.Count)
+{
+Console.WriteLine("Книга \"" + books[choice - 1] + "\" выдана читателю" + fullName);
+}else{
+Console.WriteLine("Неверный номер.");
+        }
+    }
+}

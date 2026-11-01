@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-
 class Program
 {
-static List<string> users = new List<string>();
+static List<string> users = new List<string>(); 
 
 static List<string> books = new List<string>()
 {
